@@ -5,7 +5,7 @@ public abstract class Human {
 	private String status;
 	private String gender;
 	
-	public Human(String accName, String accStatus, String accGender, int accAge) {
+	public Human(int accAge, String accName, String accStatus, String accGender) {
 		age = accAge;
 		name = accName;
 		status = accStatus;
