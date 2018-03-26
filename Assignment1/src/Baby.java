@@ -12,4 +12,10 @@ public class Baby extends Human{
 		this.parentList = new ArrayList<Adult>();
 	}
 
+	@Override
+	protected void addParent(Adult adult) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

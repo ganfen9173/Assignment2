@@ -20,4 +20,6 @@ public abstract class Human {
 	public String getName() {return name;}
 	public String getStatus() {return status;}
 	public String getGender() {return gender;}
+	
+	protected abstract void addParent(Adult adult);
 }

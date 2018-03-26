@@ -14,9 +14,15 @@ public class Adult extends Human implements Relationship{
 		this.childList = new ArrayList<Integer>();
 	}
 
+	@Override
+	public void AddFriend() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	@Override
-	public void AddParent() {
+	protected void addParent(Adult adult) {
 		// TODO Auto-generated method stub
 		
 	}

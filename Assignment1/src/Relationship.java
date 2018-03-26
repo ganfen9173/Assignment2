@@ -1,4 +1,4 @@
 
 public interface Relationship {
-	public void AddParent();
+	public void AddFriend();
 }

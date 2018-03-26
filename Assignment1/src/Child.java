@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author s3703529
  *
  */
-public class Child extends Human{
+public class Child extends Human implements Relationship{
 
 	private int id;
 	private ArrayList<Integer> friendList;
@@ -19,6 +19,18 @@ public class Child extends Human{
 		this.id = accId;
 		this.friendList = new ArrayList<Integer>();
 		this.parentList = new ArrayList<Adult>();
+	}
+
+	@Override
+	public void AddFriend() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	protected void addParent(Adult adult) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
