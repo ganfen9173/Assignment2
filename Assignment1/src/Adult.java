@@ -20,7 +20,6 @@ public class Adult extends Human implements Relationship{
 		
 	}
 
-
 	@Override
 	protected void addParent(Adult adult) {
 		// TODO Auto-generated method stub
