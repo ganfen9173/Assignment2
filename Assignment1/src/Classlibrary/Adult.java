@@ -1,29 +1,20 @@
+package Classlibrary;
 import java.util.ArrayList;
 
-public class Adult extends Human implements Relationship{
+public class Adult extends Person{
 
 	private int id;
+	private Parent parents;
 	private ArrayList<Integer> friendList;
 	private ArrayList<Integer> childList;
 	
-	public Adult(String accName, String accStatus, String accGender, int accAge, int accId) {
+	public Adult(int accId, int accAge, String accName, String accStatus, String accGender) {
 		// TODO Auto-generated constructor stub
 		super(accAge, accName, accStatus, accGender);
 		this.id = accId;
 		this.friendList = new ArrayList<Integer>();
 		this.childList = new ArrayList<Integer>();
-	}
-
-	@Override
-	public void AddFriend() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void addParent(Adult adult) {
-		// TODO Auto-generated method stub
-		
+		parents = new Parent(null,null);
 	}
 
 }
