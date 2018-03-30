@@ -1,11 +1,12 @@
 package Classlibrary;
 
+
 public class Parent {
 	
-	private Adult parent1;
-	private Adult parent2;
+	private Person parent1;
+	private Person parent2;
 
-	public Parent(Adult parent1, Adult parent2) {
+	public Parent(Person parent1, Person parent2) {
 		this.parent1 = parent1;
 		this.parent2 = parent2;
 	}

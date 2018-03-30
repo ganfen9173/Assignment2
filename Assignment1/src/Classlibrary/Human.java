@@ -1,6 +1,11 @@
 package Classlibrary;
 
 public abstract class Human {
+	/**
+	 * @author s3703529
+	 *
+	 */
+	
 	private int age;
 	private String name;
 	private String status;
@@ -55,4 +60,5 @@ public abstract class Human {
 	public Parent getParents() {
 		return parents;
 	}
+
 }
