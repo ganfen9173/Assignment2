@@ -2,7 +2,10 @@ package Classlibrary;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+/**
+ * This is the Driver class
+ *
+ */
 public class SocialNetWork {
 	/**
 	 * @author s3703529
@@ -26,20 +29,41 @@ public class SocialNetWork {
 		this.systemName = systemName;
 	}
 
-	
+	/**
+	 * display all people in the social net work with name only.
+	 *
+	 */
 	public void getAllPeople() {
-		
-		;
 		for (int i = 0; i<personList.size();i++) {
 			System.out.println(personList.get(i).getName());
 			}		
 		
 	}
 	
+	/**
+	 * display the giving list of person
+	 * 
+	 * @param personList List of person object
+	 */
+	public void getPersonList(ArrayList<Person> personList) {
+		for (int i = 0; i<personList.size();i++) {
+			System.out.println(personList.get(i).getName());
+			}	
+	}
+	
+	/**
+	 * adding a person without keyboard input
+	 * 
+	 * @param Default person object in this social network
+	 */
 	public void addAdmin(Person admin) {
 		personList.add(admin);
 	}
 	
+	/**
+	 *  adding a person by keyboard input
+	 *
+	 */
 	public void addUser() {
 		try {
 			Person user = new Person(0, null, null, null);
@@ -60,6 +84,11 @@ public class SocialNetWork {
 		}
 	}
 
+	/**
+	 * select a person by keyboard input a string
+	 * 
+	 * @return Person get the select object
+	 */
 	public Person selectUser() {
 		String name = new Scanner(System.in).nextLine();
 		Boolean match = false;
@@ -85,10 +114,23 @@ public class SocialNetWork {
 		}
 		
 	}
+	
+	/**
+	 * display the profile of the selected person
+	 * 
+	 * @param person
+	 */
 	public void displayProfile(Person person) {
 		System.out.println(person.getAge()+" "+person.getName()+" "+person.getGender()+" "+person.getStatus());
+		System.out.println("Friend list below:");
+		System.out.println(person.getFriendList());
 	}
 	
+	/**
+	 * update the profile of the selected person
+	 * 
+	 * @param person
+	 */
 	public void updateProfile(Person person) {
 		try {
 			int i = personList.indexOf(person);
@@ -106,9 +148,30 @@ public class SocialNetWork {
 			System.out.println("Update failed");
 		}
 	}
+	/**
+	 * delete the selected person of the social network
+	 * 
+	 * @param person
+	 */
 	public void deletePerson(Person person) {
 		int i = personList.indexOf(person);
 		personList.remove(i);
 	}
 	
+	public void detectPerson(Person person) {
+		if (person.getAge() == 0) {
+			System.out.println("Not Founded");
+		} else {
+			System.out.println("Founded");
+		}
+	}
+	public boolean searchPersonList(Person person, ArrayList<Person> personList) {
+		for (int i = 0; i<personList.size();i++) {
+			if (personList.get(i) == person) {
+				break;
+			}
+			return true;
+		}
+		return false;
+	}
 }

@@ -1,5 +1,6 @@
 package Classlibrary;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MiniNet {
@@ -12,6 +13,7 @@ public class MiniNet {
 
 	public static void main(String[] args) {
 		Person admin = new Person(100, "admin", null, null);
+		
 		mysocial.addAdmin(admin);
 		printMenu();
 		selectOption();
@@ -28,7 +30,7 @@ public class MiniNet {
 		System.out.println("...");
 		System.out.println("?. Exit");
 		System.out.println("");
-		System.out.println("Enter an oprion:");
+		System.out.println("Enter an option:");
 	}
 
 	public static void selectOption() {
@@ -46,29 +48,10 @@ public class MiniNet {
 				} else if (Integer.parseInt(option) == 3) {
 					System.out.println("Please input the name.");
 					Person person = mysocial.selectUser();
-					if (person.getAge() == 0) {
-						System.out.println("Not Founded");
-					} else {
-						System.out.println("Founded");
-						mysocial.displayProfile(person);
-						System.out.println("Please choose to continue. 1. updte profile   2. delete this person. 3. Exit to main menu.");
-						do {
-							String option1 = new Scanner(System.in).nextLine();
-							if (Integer.parseInt(option1) == 1) {
-								System.out.println("Please update your information in order of age name gender status.");
-								mysocial.updateProfile(person);
-								System.out.println("Update successful");
-							}
-							else if (Integer.parseInt(option1) == 1) {
-								mysocial.deletePerson(person);
-								System.out.println("delete successful");
-							}
-							else if (Integer.parseInt(option1) == 3) {
-								break;
-							}
-						} while (true);
-					}
-					System.out.println("Completed! Return to main menu.");
+					mysocial.detectPerson(person);
+					mysocial.displayProfile(person);
+					System.out.println("Please choose to continue. 1. updte profile   2. delete this person. 3. select another person. 4. exit to main menu");
+					ProfileOption(person);
 				} else if (Integer.parseInt(option) == 0) {
 					System.out.println("Exit");
 					break;
@@ -76,8 +59,66 @@ public class MiniNet {
 			} catch (Exception e) {
 				System.out.println("you cant do that.");
 			}
-
 		} while (true);
+	}
+	
+	public static void ProfileOption(Person person){
+		do {
+			String option = new Scanner(System.in).nextLine();
+			if (Integer.parseInt(option) == 1) {
+				System.out.println("Please update your information in order of age name gender status.");
+				mysocial.updateProfile(person);
+				System.out.println("Update Complete!");
+			}
+			else if (Integer.parseInt(option) == 2) {
+				mysocial.deletePerson(person);
+				System.out.println("delete successful");
+				break;
+			}
+			else if (Integer.parseInt(option) == 3) {
+				System.out.println("Select another person.");
+				Person person1 = mysocial.selectUser();
+				mysocial.detectPerson(person1);
+				mysocial.displayProfile(person1);
+				System.out.println("Please choose to continue. 1. add as friend. 2. add as child. 3. add as parent. 0. Exit to main menu.");
+				ConnectionOption(person,person1);
+			}
+			else if (Integer.parseInt(option) == 0) {
+				System.out.println("return to main menu.");
+				break;
+			}
+		} while (true);
+	}
+	
+	public static void ConnectionOption(Person person, Person person1) {
+		String option = new Scanner(System.in).nextLine();
+		if (Integer.parseInt(option) == 1) {
+			System.out.println(mysocial.searchPersonList(person1,person.getFriendList()));
+			System.out.println(person.getAge()<=2);
+			System.out.println(person.getAge()<=2);
+			System.out.println(person1.getAge()<=2);
+			System.out.println(Math.abs(person1.getAge()-person.getAge())>=3);
+			if((mysocial.searchPersonList(person1,person.getFriendList()))||(person.getAge()<=2)||(person1.getAge()<=2)||(Math.abs(person1.getAge()-person.getAge())>=3)) {
+					System.out.println("Cannot be friend");
+				}
+			else {
+				person.getFriendList().add(person1);
+				person1.getFriendList().add(person);
+				System.out.println("added Complete!");
+			}
+		}
+		else if (Integer.parseInt(option) == 2) {
+
+			System.out.println("delete successful");
+
+		}
+		else if (Integer.parseInt(option) == 3) {
+			System.out.println("Select another person.");
+
+		}
+		else if (Integer.parseInt(option) == 0) {
+			System.out.println("Exit to personal profile.");
+		}
 	}
 
 }

@@ -53,12 +53,14 @@ public abstract class Human {
 		this.gender = gender;
 	}
 	
+	public Parent getParents() {
+		return parents;
+	}
+	
 	public void setParents(Parent parents) {
 		this.parents = parents;
 	}
 
-	public Parent getParents() {
-		return parents;
-	}
+	
 
 }

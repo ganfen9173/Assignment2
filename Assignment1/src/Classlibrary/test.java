@@ -11,7 +11,7 @@ public class test {
 		System.out.println("3");
 		mysocial.addAdmin(admin);
 		System.out.println("4");
-		mysocial.getAllPeople();
+		//mysocial.getAllPeople();
 		System.out.println("5");
 
 	}
