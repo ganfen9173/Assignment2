@@ -1,4 +1,4 @@
-package Classlibrary;
+package mySocialNetwork;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,6 @@ public class Person extends Human{
 	 * @author s3703529
 	 *
 	 */
-	@SuppressWarnings("unused")
 	private Parent parents;
 
 	private ArrayList<Person> friendList;

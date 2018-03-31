@@ -1,4 +1,4 @@
-package Classlibrary;
+package mySocialNetwork;
 
 public class Account {
 	

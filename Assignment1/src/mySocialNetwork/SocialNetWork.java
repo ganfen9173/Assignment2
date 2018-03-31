@@ -1,4 +1,4 @@
-package Classlibrary;
+package mySocialNetwork;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -89,7 +89,7 @@ public class SocialNetWork {
 	 * 
 	 * @return Person get the select object
 	 */
-	public Person selectUser() {
+	public Person SearchPerson() {
 		String name = new Scanner(System.in).nextLine();
 		Boolean match = false;
 		Person person =new Person(0,null,null,null);
@@ -104,7 +104,7 @@ public class SocialNetWork {
 			}		
 		}
 		catch (Exception e) {
-			System.out.println("selectUser Catch!");
+			System.out.println("SearchUser error Catch!");
 		}
 		if(match == false) {
 			return person;
@@ -113,8 +113,7 @@ public class SocialNetWork {
 			return personList.get(index);
 		}
 		
-	}
-	
+	}	
 	/**
 	 * display the profile of the selected person
 	 * 
@@ -123,7 +122,7 @@ public class SocialNetWork {
 	public void displayProfile(Person person) {
 		System.out.println(person.getAge()+" "+person.getName()+" "+person.getGender()+" "+person.getStatus());
 		System.out.println("Friend list below:");
-		System.out.println(person.getFriendList());
+		getPersonList(person.getFriendList());
 	}
 	
 	/**
@@ -158,6 +157,13 @@ public class SocialNetWork {
 		personList.remove(i);
 	}
 	
+	/**
+	 * detect weather find the search person, 
+	 * if not, age will be default value 0,
+	 * otherwise founded
+	 * 
+	 * @param person
+	 */
 	public void detectPerson(Person person) {
 		if (person.getAge() == 0) {
 			System.out.println("Not Founded");
@@ -165,6 +171,15 @@ public class SocialNetWork {
 			System.out.println("Founded");
 		}
 	}
+	
+	
+	/**
+	 * 
+	 * 
+	 * @param person
+	 * @param personList
+	 * @return
+	 */
 	public boolean searchPersonList(Person person, ArrayList<Person> personList) {
 		for (int i = 0; i<personList.size();i++) {
 			if (personList.get(i) == person) {
@@ -173,5 +188,46 @@ public class SocialNetWork {
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean detectFriendship(Person person, Person person1) {
+		return (searchPersonList(person1,person.getFriendList())
+				||(person.getAge()<=2)
+				||(person1.getAge()<=2)
+				||(Math.abs(person1.getAge()-person.getAge())>=3));
+		}
+	
+	public void connectFriendship(Person person, Person person1) {
+		if (detectFriendship(person, person1)) {
+				System.out.println("Cannot be friend");
+		}else {
+			person.getFriendList().add(person1);
+			person1.getFriendList().add(person);
+			System.out.println("added Complete!");
+		}
+	}
+	
+	public boolean detectDependency(Person person, Person person1) {
+		return (searchPersonList(person1, person.getChildrenList())
+				||person.getAge()<=16
+				||person.getAge()-person1.getAge()<=16
+				||person1.getParents().getParent1()== person
+				||person1.getParents().getParent2()== person) ;
+	}
+	
+	public void connectDependency(Person person, Person person1) {
+		if(detectDependency(person,person1)) {
+			System.out.println("Cannot add dependancy");
+		}else{
+			person.getChildrenList().add(person1);
+			if(person1.getParents().getParent1() == null) {
+				//person1.parents.setParent1(person);
+				person1.getParents().setParent1(person);
+			}else {
+				//person1.parents.setParent2(person);
+				person1.getParents().setParent2(person);
+			}
+			System.out.println("added Complete!");
+		}
 	}
 }

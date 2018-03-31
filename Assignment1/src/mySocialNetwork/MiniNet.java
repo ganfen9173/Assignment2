@@ -1,4 +1,4 @@
-package Classlibrary;
+package mySocialNetwork;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -47,7 +47,7 @@ public class MiniNet {
 					System.out.println("Completed! Return to main menu.");
 				} else if (Integer.parseInt(option) == 3) {
 					System.out.println("Please input the name.");
-					Person person = mysocial.selectUser();
+					Person person = mysocial.SearchPerson();
 					mysocial.detectPerson(person);
 					mysocial.displayProfile(person);
 					System.out.println("Please choose to continue. 1. updte profile   2. delete this person. 3. select another person. 4. exit to main menu");
@@ -77,7 +77,7 @@ public class MiniNet {
 			}
 			else if (Integer.parseInt(option) == 3) {
 				System.out.println("Select another person.");
-				Person person1 = mysocial.selectUser();
+				Person person1 = mysocial.SearchPerson();
 				mysocial.detectPerson(person1);
 				mysocial.displayProfile(person1);
 				System.out.println("Please choose to continue. 1. add as friend. 2. add as child. 3. add as parent. 0. Exit to main menu.");
@@ -93,28 +93,14 @@ public class MiniNet {
 	public static void ConnectionOption(Person person, Person person1) {
 		String option = new Scanner(System.in).nextLine();
 		if (Integer.parseInt(option) == 1) {
-			System.out.println(mysocial.searchPersonList(person1,person.getFriendList()));
-			System.out.println(person.getAge()<=2);
-			System.out.println(person.getAge()<=2);
-			System.out.println(person1.getAge()<=2);
-			System.out.println(Math.abs(person1.getAge()-person.getAge())>=3);
-			if((mysocial.searchPersonList(person1,person.getFriendList()))||(person.getAge()<=2)||(person1.getAge()<=2)||(Math.abs(person1.getAge()-person.getAge())>=3)) {
-					System.out.println("Cannot be friend");
-				}
-			else {
-				person.getFriendList().add(person1);
-				person1.getFriendList().add(person);
-				System.out.println("added Complete!");
-			}
+			mysocial.connectFriendship(person, person1);;
 		}
 		else if (Integer.parseInt(option) == 2) {
-
-			System.out.println("delete successful");
-
+			mysocial.connectDependency(person, person1);
 		}
 		else if (Integer.parseInt(option) == 3) {
 			System.out.println("Select another person.");
-
+			mysocial.connectDependency(person1, person);	
 		}
 		else if (Integer.parseInt(option) == 0) {
 			System.out.println("Exit to personal profile.");
