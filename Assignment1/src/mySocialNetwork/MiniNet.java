@@ -33,6 +33,9 @@ public class MiniNet {
 		System.out.println("Enter an option:");
 	}
 
+	/**
+	 * main menu
+	 */
 	public static void selectOption() {
 		do {
 			try {
@@ -62,6 +65,11 @@ public class MiniNet {
 		} while (true);
 	}
 	
+	/**
+	 * Profile menu of the selected person
+	 * 
+	 * @param person
+	 */
 	public static void ProfileOption(Person person){
 		do {
 			String option = new Scanner(System.in).nextLine();
@@ -90,6 +98,12 @@ public class MiniNet {
 		} while (true);
 	}
 	
+	/**
+	 * Connection menu for person and person1
+	 * 
+	 * @param person selected person
+	 * @param person1 searched person by the selected person
+	 */
 	public static void ConnectionOption(Person person, Person person1) {
 		String option = new Scanner(System.in).nextLine();
 		if (Integer.parseInt(option) == 1) {
