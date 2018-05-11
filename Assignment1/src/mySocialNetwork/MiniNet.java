@@ -9,7 +9,7 @@ public class MiniNet {
 	 *
 	 */
 
-	static SocialNetWork mysocial = new SocialNetWork("My Social Network");
+	static Driver mysocial = new Driver("My Social Network");
 
 	public static void main(String[] args) {
 		Person admin = new Person(100, "admin", null, null);
@@ -26,9 +26,7 @@ public class MiniNet {
 		System.out.println("2. Add a person into network");
 		System.out.println("3. Select a person");
 		System.out.println("4. Are these two direct friends?");
-		System.out.println("5.");
-		System.out.println("...");
-		System.out.println("?. Exit");
+		System.out.println("0. Exit");
 		System.out.println("");
 		System.out.println("Enter an option:");
 	}
@@ -53,7 +51,7 @@ public class MiniNet {
 					Person person = mysocial.SearchPerson();
 					mysocial.detectPerson(person);
 					mysocial.displayProfile(person);
-					System.out.println("Please choose to continue. 1. updte profile   2. delete this person. 3. select another person. 4. exit to main menu");
+					System.out.println("Please choose to continue. 1. updte profile   2. delete this person. 3. select another person. 0. exit to main menu");
 					ProfileOption(person);
 				} else if (Integer.parseInt(option) == 0) {
 					System.out.println("Exit");
